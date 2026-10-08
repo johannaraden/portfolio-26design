@@ -1,4 +1,4 @@
-export type Screen = {
+type ScreenBase = {
   title: string;
   wireframe: string;
   prototype: string;
@@ -7,9 +7,18 @@ export type Screen = {
   format: "phone" | "desktop";
 };
 
-export type CaseStudy = {
+type ScreenWithoutDesign = ScreenBase & {
+  design?: undefined;
+};
+
+type ScreenWithDesign = ScreenBase & {
+  design: string;
+};
+
+export type Screen = ScreenWithDesign | ScreenWithoutDesign;
+
+type BaseCaseStudy = {
   slug: string;
-  title: string;
   client: string;
   role: string[];
   cover: string;
@@ -18,10 +27,19 @@ export type CaseStudy = {
   approach: string;
   personas: { name: string; image: string }[];
   journeyEmbed?: string;
-  screens: Screen[];
   motion?: string;
   outcome: { text: string; points?: string[]; placeholder?: boolean };
 };
+
+export type CaseStudy =
+  | (BaseCaseStudy & {
+      title: "Swedish Nouns";
+      screens: ScreenWithDesign[];
+    })
+  | (BaseCaseStudy & {
+      title: Exclude<string, "Swedish Nouns">;
+      screens: ScreenWithoutDesign[];
+    });
 
 export const caseStudies: CaseStudy[] = [
   {
@@ -29,7 +47,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Swedish Nouns",
     client: "Language-learning app concept",
     role: ["UX research", "Visual design", "Prototyping", "Learning design"],
-    cover: "/img/lang-home-proto.webp",
+    cover: "/img/swedish-nouns-home-2026.png",
     accent: "#e2f046",
     challenge:
       "French has complex verb conjugations, German a challenging word order — and Swedish has nouns. As a Swedish teacher for many years, I know nouns are where most learners stumble. Learning a language is rewarding but overwhelming, and most apps try to cover everything at once.",
@@ -43,16 +61,18 @@ export const caseStudies: CaseStudy[] = [
       "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FSebzPuMKApO0CG2LZobjis%2FL.A-User-Journeys%3Fnode-id%3D0%253A1",
     screens: [
       {
-        title: "Home",
+        title: "Create account",
         wireframe: "/img/lang-home-wf.webp",
         prototype: "/img/lang-home-proto.webp",
+        design: "/img/swedish-nouns-create-account-2026.png",
         format: "phone",
-        text: "A single, confident entry point. Learners pick their level straight away instead of wading through menus — the topic is the product.",
+        text: "A clean onboarding flow for a language app: the account setup is simple, confident and focused on the learner's next step.",
       },
       {
-        title: "Profile & level",
+        title: "Choose level",
         wireframe: "/img/lang-profile-wf.webp",
         prototype: "/img/lang-profile-proto.webp",
+        design: "/img/swedish-nouns-home-2026.png",
         format: "phone",
         text: "The personas showed how important it is to grasp how far along you are. The profile shows points and current level, lets you change level, and shows how much of each level is finished.",
       },
@@ -61,6 +81,7 @@ export const caseStudies: CaseStudy[] = [
         wireframe: "/img/lang-test-wf.webp",
         prototype: "/img/lang-test-proto.webp",
         format: "phone",
+        design: "/img/swedish-nouns-test-correct-2026.png",
         text: "Manuel is impatient and wants immediate feedback, so a progress bar shows how long the exercise takes and how well he is doing. Ji-Yun benefits too: if level 1 is too easy, the exit button lets her move on.",
       },
     ],

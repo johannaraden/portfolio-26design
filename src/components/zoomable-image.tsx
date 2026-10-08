@@ -22,7 +22,7 @@ export function ZoomableImage({ src, alt, width, height, className, sizes }: Pro
       <button
         type="button"
         onClick={() => dialogRef.current?.showModal()}
-        className={cn("group block w-full cursor-zoom-in overflow-hidden", className)}
+        className="group block h-full w-full cursor-zoom-in overflow-hidden rounded-xl"
         aria-label={`Enlarge: ${alt}`}
       >
         <Image
@@ -31,7 +31,7 @@ export function ZoomableImage({ src, alt, width, height, className, sizes }: Pro
           width={width}
           height={height}
           sizes={sizes}
-          className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.02]"
+          className={cn("h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]", className)}
         />
       </button>
       <dialog

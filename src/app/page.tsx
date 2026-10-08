@@ -89,9 +89,7 @@ export default function Home() {
                 </div>
                 <div className="mt-5 flex items-baseline justify-between gap-4">
                   <h3 className="font-display text-3xl sm:text-4xl">{cs.title}</h3>
-                  <span className="text-sm text-ink-2">{cs.year}</span>
                 </div>
-                <p className="mt-1 text-ink-2">{cs.tagline}</p>
                 <p className="mt-3 text-sm text-ink-2">{cs.role.join(" · ")}</p>
                 <span className="mt-4 inline-flex items-center gap-2 text-sm font-medium underline-offset-4 group-hover:underline">
                   Read case study <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>

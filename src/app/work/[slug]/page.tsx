@@ -18,7 +18,6 @@ export async function generateMetadata({ params }: PageProps<"/work/[slug]">): P
   if (!cs) return {};
   return {
     title: cs.title,
-    description: `${cs.tagline} ${cs.challenge.slice(0, 120)}…`,
     openGraph: { images: [{ url: cs.cover }] },
   };
 }
@@ -40,6 +39,9 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
   const index = caseStudies.findIndex((c) => c.slug === slug);
   const next = caseStudies[(index + 1) % caseStudies.length];
 
+        console.log("versioner!!", cs.screens)
+
+
   return (
     <article>
       {/* Header */}
@@ -48,12 +50,11 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
           ← All work
         </Link>
         <p className="mt-10 text-sm tracking-[0.18em] text-ink-2 uppercase">
-          {cs.client} · {cs.year}
+          {cs.client}
         </p>
         <h1 className="mt-4 font-display text-[clamp(3rem,9vw,7.5rem)] leading-[0.92] tracking-tight">
           {cs.title}
         </h1>
-        <p className="mt-6 max-w-2xl font-display text-2xl text-ink-2 italic sm:text-3xl">{cs.tagline}</p>
         <ul className="mt-8 flex flex-wrap gap-2" aria-label="My role">
           {cs.role.map((r) => (
             <li key={r} className="rounded-full border border-line px-3 py-1 text-sm">
@@ -65,10 +66,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
 
       {/* Hero visual */}
       <div className={container}>
-        <div
-          className="flex items-end justify-center overflow-hidden rounded-3xl pt-12 sm:pt-16"
-          style={{ backgroundColor: cs.accent }}
-        >
+        <div className="flex items-end justify-center overflow-hidden rounded-3xl pt-12 sm:pt-16">
           <Image
             src={cs.cover}
             alt={`${cs.title} — final design`}
@@ -127,36 +125,44 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
 
         <Block label="Wireframe → design">
           <div className="space-y-20">
-            {cs.screens.map((s) => (
-              <div key={s.title} className="reveal">
-                <h3 className="font-display text-3xl sm:text-4xl">{s.title}</h3>
-                <p className="mt-3 max-w-2xl leading-relaxed text-ink-2">{s.text}</p>
-                <div
-                  className={cn(
-                    "mt-8 grid gap-4 sm:gap-6",
-                    s.format === "phone" ? "grid-cols-2 max-w-xl" : "grid-cols-1 sm:grid-cols-2",
-                  )}
-                >
-                  {(
-                    [
-                      ["Wireframe", s.wireframe],
-                      ["Design", s.prototype],
-                    ] as const
-                  ).map(([label, src]) => (
-                    <figure key={src}>
-                      <ZoomableImage
-                        src={src}
-                        alt={`${cs.title} ${s.title} — ${label.toLowerCase()}`}
-                        {...size(src)}
-                        sizes="(min-width: 768px) 35vw, 50vw"
-                        className="rounded-xl bg-white"
-                      />
-                      <figcaption className="mt-2 text-sm text-ink-2">{label}</figcaption>
-                    </figure>
-                  ))}
+            {cs.screens.map((s) => {
+              const hasDesign = (screen: typeof s): screen is Extract<typeof s, { design: string }> => {
+                return typeof screen.design === "string";
+              };
+
+              const variants: [string, string][] = [
+                ["Wireframe", s.wireframe],
+                ["Design2020", s.prototype],
+                ...(hasDesign(s) ? [["Design2026", s.design] as [string, string]] : []),
+              ];
+
+              return (
+                <div key={s.title} className="reveal">
+                  <h3 className="font-display text-3xl sm:text-4xl">{s.title}</h3>
+                  <p className="mt-3 max-w-2xl leading-relaxed text-ink-2">{s.text}</p>
+                  <div
+                    className={cn(
+                      "mt-8 grid gap-4 sm:gap-6",
+                      s.format === "phone" ? "grid-cols-1 sm:grid-cols-3" : "grid-cols-1 md:grid-cols-3",
+                    )}
+                  >
+                    {variants.map(([label, src]) => (
+                      <figure key={`${s.title}-${label}`} className="flex h-full flex-col">
+                        <div className="flex h-[260px] items-center justify-center overflow-hidden rounded-xl sm:h-[300px] md:h-[340px]">
+                          <ZoomableImage
+                            src={src}
+                            alt={`${cs.title} ${s.title} — ${label.toLowerCase()}`}
+                            {...size(src)}
+                            sizes="(min-width: 768px) 33vw, 100vw"
+                            className="h-full w-full object-contain"
+                          />
+                        </div>
+                      </figure>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </Block>
 
