@@ -3,11 +3,9 @@ import Link from "next/link";
 import { SectionHeading } from "@/components/section-heading";
 import { size } from "@/content/images";
 import {
-  aiWork,
   articles,
   codeProjects,
   hero,
-  principles,
   site,
   skills,
 } from "@/content/site";

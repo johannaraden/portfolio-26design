@@ -20,7 +20,6 @@ export const hero = {
 
 export type Principle = { title: string; text: string; placeholder?: boolean };
 
-/** How Johanna works. Rewrite in your own words — these are a draft based on the old site. */
 export const principles: Principle[] = [
   {
     title: "Message first",
