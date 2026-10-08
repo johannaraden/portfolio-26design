@@ -1,10 +1,3 @@
-/**
- * All site copy lives here so it can be edited without touching layout code.
- *
- * Anything marked `placeholder: true` renders with a dashed "to fill in" outline
- * and makes `npm run check:content` fail — so nothing half-finished gets deployed.
- */
-
 export const site = {
   name: "Johanna Richter Rådén",
   url: "https://johannaraden.netlify.app",
