@@ -69,7 +69,9 @@ export default function Home() {
             <li key={cs.slug} className="reveal">
               <Link href={`/work/${cs.slug}/`} className="group block">
                 <div
-                  className="relative flex aspect-[4/3] items-end justify-center overflow-hidden rounded-3xl"
+                  className={cn(
+                    "relative flex aspect-[4/3] justify-center overflow-hidden rounded-3xl items-center",
+                  )}
                   style={{ backgroundColor: cs.accent }}
                 >
                   <Image
@@ -79,9 +81,13 @@ export default function Home() {
                     sizes="(min-width: 768px) 50vw, 100vw"
                     className={cn(
                       "transition-transform duration-700 ease-out group-hover:-translate-y-2 group-hover:scale-[1.02]",
-                      size(cs.cover).height > size(cs.cover).width
-                        ? "h-[88%] w-auto translate-y-[18%] drop-shadow-2xl"
-                        : "w-[88%] translate-y-[6%] rounded-t-xl shadow-2xl",
+                      cs.slug === "swedish-nouns"
+                        ? "mt-3 h-auto w-[30%] object-contain"
+                        : cs.slug === "karamba"
+                          ? "mt-8 h-auto w-[68%] object-contain"
+                          : size(cs.cover).height > size(cs.cover).width
+                            ? "h-[88%] w-auto translate-y-[10%]"
+                            : "w-[88%] translate-y-[6%] rounded-t-xl",
                     )}
                   />
                 </div>
@@ -108,7 +114,7 @@ export default function Home() {
           intro="I found my way into design and code through communication. After years of working as a communicator as well as teaching, I combine an ear for language with a sense for visuals — and some code to build what I envision."
         />
         <div className="mt-14 flex justify-center">
-          <dl className="grid w-full max-w-5xl gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+          <dl className="grid w-full max-w-5xl gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
             {skills.map((group) => (
               <div key={group.title} className={cn("reveal", group.placeholder && "placeholder")}>
                 <dt className="border-b border-line pb-3 text-sm tracking-[0.18em] text-ink-2 uppercase">

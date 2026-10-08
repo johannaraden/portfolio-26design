@@ -50,10 +50,10 @@ export const caseStudies: CaseStudy[] = [
     cover: "/img/swedish-nouns-home-2026.png",
     accent: "#e2f046",
     challenge:
-      "French has complex verb conjugations, German a challenging word order — and Swedish has nouns. As a Swedish teacher for many years, I know nouns are where most learners stumble. Learning a language is rewarding but overwhelming, and most apps try to cover everything at once.",
+"As a Swedish teacher for many years, I know nouns and their articles are where most learners stumble. It is something you simply have a gut feeling for as a native speaker, and unfortunately for my students, there are few rules or guidelines to rely on. The idea of creating a tool specifically for this purpose was born, one that I would have encouraged my students to use for just a few minutes a day to help develop that gut feeling.",
     approach:
-      "An app that does one thing: Swedish nouns, and only nouns. Narrowing the scope lets learners see the whole topic, understand how far along they are, and start at the level that suits them. The simplicity makes studying feel achievable.",
-    personas: [
+"An app that does one thing: Swedish nouns, and only nouns. This app narrows the scope of language learning, helps users understand how far along they are, and lets them start at the level that suits them. Its simplicity lowers the barrier to getting started and makes studying feel achievable.",    
+personas: [
       { name: "Ji-Yun", image: "/img/lang-persona-jiyun.webp" },
       { name: "Manuel", image: "/img/lang-persona-manuel.webp" },
     ],
@@ -72,7 +72,7 @@ export const caseStudies: CaseStudy[] = [
         title: "Choose level",
         wireframe: "/img/lang-profile-wf.webp",
         prototype: "/img/lang-profile-proto.webp",
-        design: "/img/swedish-nouns-home-2026.png",
+        design: "/img/swedish-nouns-profile-2026.png",
         format: "phone",
         text: "The personas showed how important it is to grasp how far along you are. The profile shows points and current level, lets you change level, and shows how much of each level is finished.",
       },
@@ -85,7 +85,7 @@ export const caseStudies: CaseStudy[] = [
         text: "Manuel is impatient and wants immediate feedback, so a progress bar shows how long the exercise takes and how well he is doing. Ji-Yun benefits too: if level 1 is too easy, the exit button lets her move on.",
       },
     ],
-    motion: "/img/lang-flow.gif",
+    motion: "/video/swedish-nouns-walkthrough-2026.mp4",
     outcome: {
       text: "Working with personas made it clear what learners need:",
       points: [
@@ -100,7 +100,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Karamba Dance Studio",
     client: "Website for a new dance school",
     role: ["Client brief", "UX research", "Art direction", "Web design"],
-    cover: "/img/dance-home-proto.webp",
+    cover: "/img/karamba-homepage-laptop-mockup.svg",
     accent: "#ee8fd0",
     challenge:
       "A newly started dance school needed a website that made booking courses easy, gave a feel for the different dance styles and showed off the instructors' skills — in a city that already had several well-established schools.",
@@ -118,7 +118,7 @@ export const caseStudies: CaseStudy[] = [
         wireframe: "/img/dance-home-wf.webp",
         prototype: "/img/dance-home-proto.webp",
         format: "desktop",
-        text: "The home page has to inspire. A top menu would crop the dance photography awkwardly, so a side menu leaves the full frame to the imagery.",
+        text: "The home page has to inspire. A top menu would crop an image awkwardly, so a side menu leaves the full frame to the imagery. The image can be changed to a video or a carousel of images since the research showed that the visual impression is what convinces people to book a course, both beginners and experienced dancers.",
       },
       {
         title: "Courses",
@@ -137,8 +137,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     outcome: {
       // The old site only had lorem ipsum here.
-      text: "Write a short outcome: what the client said, whether the site launched, and what you would do differently now.",
-    },
+    text: " "    },
   },
 ];
 

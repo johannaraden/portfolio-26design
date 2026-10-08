@@ -53,8 +53,23 @@ export const skills: SkillGroup[] = [
     items: ["Figma", "Canva", "Adobe XD", "Adobe Illustrator", "Adobe InDesign", "Adobe Premiere", "Miro", "Personas & user journeys"],
   },
   {
-    title: "Build",
-    items: ["HTML & CSS", "JavaScript", "React", "Node.js", "REST APIs", ""],
+  title: "Web development",
+  items: [
+    "HTML & CSS",
+    "JavaScript",
+    "React",
+    "TypeScript",
+    "Next.js",
+    "Node.js",
+    "REST APIs",
+    "Cypress",
+    "Jest",
+    "Accessibility (a11y)"
+  ],
+},
+  {
+    title: "Platforms & tools",
+    items: ["SAP Commerce", "Git, GitHub & GitLab", "Jenkins", "Netlify"],
   },
 ];
 

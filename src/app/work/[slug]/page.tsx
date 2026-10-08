@@ -66,7 +66,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
 
       {/* Hero visual */}
       <div className={container}>
-        <div className="flex items-end justify-center overflow-hidden rounded-3xl pt-12 sm:pt-16">
+        <div className="flex items-end justify-center overflow-hidden rounded-3xl pt-6 sm:pt-8">
           <Image
             src={cs.cover}
             alt={`${cs.title} — final design`}
@@ -75,8 +75,8 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
             sizes="(min-width: 1152px) 1100px, 100vw"
             className={cn(
               size(cs.cover).height > size(cs.cover).width
-                ? "-mb-24 h-auto w-1/2 max-w-xs drop-shadow-2xl sm:w-1/3"
-                : "w-[88%] rounded-t-xl shadow-2xl",
+                ? "-mb-8 h-auto w-[24%] max-w-[160px] drop-shadow-2xl sm:w-[22%]"
+                : "w-[30%] rounded-t-xl shadow-2xl",
             )}
           />
         </div>
@@ -168,11 +168,14 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
 
         {cs.motion && (
           <Block label="In motion">
-            <Image
+            <video
               src={cs.motion}
-              alt={`${cs.title} interaction prototype`}
-              {...size(cs.motion)}
-              className="h-auto w-full max-w-md rounded-2xl"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              className="h-auto w-full max-w-md rounded-2xl border border-line bg-black"
             />
           </Block>
         )}
