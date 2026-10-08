@@ -138,7 +138,6 @@ export const caseStudies: CaseStudy[] = [
     outcome: {
       // The old site only had lorem ipsum here.
       text: "Write a short outcome: what the client said, whether the site launched, and what you would do differently now.",
-      placeholder: true,
     },
   },
 ];

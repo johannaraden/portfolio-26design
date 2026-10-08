@@ -43,33 +43,6 @@ export const principles: Principle[] = [
   },
 ];
 
-export type AiItem = { title: string; text: string; tools?: string[]; placeholder?: boolean };
-
-/**
- * AI work. These are placeholders — replace with real examples:
- * a campaign visual, a moodboard series, a short video, a prompt system, etc.
- */
-export const aiWork: AiItem[] = [
-  {
-    title: "Concept & moodboards",
-    text: "Describe a project where you used AI image tools to explore visual directions quickly. What was the brief, what did you generate, what did you choose and why?",
-    tools: ["Add tools you use"],
-    placeholder: true,
-  },
-  {
-    title: "Copy & messaging",
-    text: "Show how you use language models to draft, test and sharpen messaging — and where your own editing made the difference.",
-    tools: ["Add tools you use"],
-    placeholder: true,
-  },
-  {
-    title: "Production at scale",
-    text: "An example of producing many on-brand assets (social formats, variants, video) with AI while keeping a consistent look.",
-    tools: ["Add tools you use"],
-    placeholder: true,
-  },
-];
-
 export type SkillGroup = { title: string; items: string[]; placeholder?: boolean };
 
 export const skills: SkillGroup[] = [
